@@ -20,7 +20,30 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  cursor: none;
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .bg-checker {
+    --checker-size: 9px; 
+    --checker-half: calc(var(--checker-size) / 2);
+    --checker-color: #141414;
+
+    background-image: 
+      linear-gradient(45deg, var(--checker-color) 25%, transparent 25%), 
+      linear-gradient(-45deg, var(--checker-color) 25%, transparent 25%), 
+      linear-gradient(45deg, transparent 75%, var(--checker-color) 75%), 
+      linear-gradient(-45deg, transparent 75%, var(--checker-color) 75%);
+    
+    background-size: var(--checker-size) var(--checker-size);
+    background-position: 
+      0 0, 
+      0 var(--checker-half), 
+      var(--checker-half) calc(-1 * var(--checker-half)), 
+      calc(-1 * var(--checker-half)) 0px;
+  }
 }
